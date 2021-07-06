@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.benlypan:UsbHid:0.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8fc5b919b90154aed1d7ecaa8cd0e46b/UsbHid-0.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8fc5b919b90154aed1d7ecaa8cd0e46b/UsbHid-0.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8fc5b919b90154aed1d7ecaa8cd0e46b/UsbHid-0.1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.benlypan/UsbHid/0.1.0/2112c55eab51bf28fa7c769fcdd322bc8fe09711/UsbHid-0.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.benlypan/UsbHid/0.1.0/80973e617e4eb2844319afdfbabf1c54dc8fd168/UsbHid-0.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

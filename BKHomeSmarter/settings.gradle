@@ -1,0 +1,2 @@
+rootProject.name = "BK-Home-Smarter"
+include ':app'

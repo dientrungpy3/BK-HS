@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310008174309",
+    "project_id": "bk-home-smarter",
+    "storage_bucket": "bk-home-smarter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310008174309:android:c8dace995bb5f6ac26e60c",
+        "android_client_info": {
+          "package_name": "com.example.bk_home_smarter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310008174309-b9pi43v2oci9s9b1q56e0iu4qukggo16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApXk7w9-Qd5StmZlOdGXwfow_iuWQr0P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310008174309-b9pi43v2oci9s9b1q56e0iu4qukggo16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

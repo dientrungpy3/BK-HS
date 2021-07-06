@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LivingRoomActivity">
+
+
+    <TextView
+        android:id="@+id/livingroomDvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/livingroomDvName"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/livingroomDvImg"
+        android:layout_width="101dp"
+        android:layout_height="107dp"
+        app:srcCompat="@drawable/bathroom" />
+</RelativeLayout>
