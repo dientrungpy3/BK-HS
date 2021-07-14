@@ -44,9 +44,13 @@ public class LivingRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_living_room);
 
-        adapter = new DeviceAdapter(this, R.layout.activity_living_room, listDevice);
+
         listDevice = new ArrayList<Device>();
         listDevice.add(new Device("deviceId", "roomId", "deviceName", true, "light"));
+        adapter = new DeviceAdapter(LivingRoomActivity.this, android.R.layout.simple_list_item_1, listDevice);
+        System.out.println(listDevice);
+//        System.out.println(this);
+//        System.out.println(listDevice);
         lvDevice.setAdapter(adapter);
 
 //        mData = FirebaseDatabase.getInstance().getReference();

@@ -9,20 +9,25 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.bk_home_smarter.src.models.Device;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class DeviceAdapter extends BaseAdapter {
 
     Context context;
     int layout;
-    List<Device> listDevice;
+    ArrayList<Device> listDevice;
     private int position;
     private View convertView;
     private ViewGroup parent;
 
-    public DeviceAdapter(Context context, int layout, List<Device> listDevice){
+    public DeviceAdapter(Context context, int layout, ArrayList<Device> listDevice){
         this.context = context;
         this.layout = layout;
         this.listDevice = listDevice;
