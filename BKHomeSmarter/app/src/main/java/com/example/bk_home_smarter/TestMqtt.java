@@ -2,18 +2,17 @@ package com.example.bk_home_smarter;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+import com.example.bk_home_smarter.src.models.Device;
 
 import android.util.Log;
 import android.view.View;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -34,11 +33,13 @@ public class TestMqtt extends AppCompatActivity {
         setContentView(R.layout.activity_test_mqtt);
 
         Button fab = findViewById(R.id.button);
+        TextView tem = findViewById(R.id.txt);
         mqttService = new MQTTService(this);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendDataMQTT("YES");
+                Device device = new Device("11", "RELAY", "1", "");
+                sendDataMQTT(device);
             }
         });
         mqttService.setCallback(new MqttCallbackExtended() {
@@ -51,12 +52,15 @@ public class TestMqtt extends AppCompatActivity {
 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
+//                Log.w(topic, message.toString());
                 // String data_to_microbit = message.toString();
                 // port.write(data_to_microbit.getBytes(),1000);
-                Log.d(topic, message.toString());
-                Toast myToast = Toast.makeText(getApplicationContext(), message.toString(), Toast.LENGTH_SHORT);
+                Gson g = new Gson();
+                Device device = g.fromJson(message.toString(), Device.class);
+                Toast.makeText(getApplicationContext(), message.toString(), Toast.LENGTH_SHORT).show();
 
-                myToast.show();
+                TextView text = findViewById(R.id.txt);
+                text.setText(device.toString());
             }
             @Override
             public void deliveryComplete(IMqttDeliveryToken token) {
@@ -66,13 +70,15 @@ public class TestMqtt extends AppCompatActivity {
 
 
 
-    public void sendDataMQTT(String data){
+    public void sendDataMQTT(Device device){
         MqttMessage msg = new MqttMessage();
         msg.setId(1234);
         msg.setQos(0);
         msg.setRetained(true);
 
-        byte[] b = data.getBytes(Charset.forName("UTF-8"));
+        String dataString = device.toString();
+
+        byte[] b = dataString.getBytes(Charset.forName("UTF-8"));
         msg.setPayload(b);
 
         Log.d("ABC","Publish:"+ msg);
@@ -81,5 +87,7 @@ public class TestMqtt extends AppCompatActivity {
         } catch ( MqttException e){
             Log.d("MQTT", "sendDataMQTT: can not send anything");
         }
+
+        Toast.makeText(TestMqtt.this, device.toString(), Toast.LENGTH_LONG).show();
     }
 }

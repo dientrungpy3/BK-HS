@@ -1,6 +1,5 @@
 package com.example.bk_home_smarter;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -23,11 +22,11 @@ public class TestFirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_firebase);
 
-        txtTestGetRoom = (TextView) findViewById(R.id.testGetRoom);
+        txtTestGetRoom = (TextView) findViewById(R.id.txtTestDB);
 
         mData = FirebaseDatabase.getInstance().getReference();
 
-        mData.child("Room").addValueEventListener(new ValueEventListener() {
+        mData.child("Device").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 txtTestGetRoom.setText(snapshot.getValue().toString());
