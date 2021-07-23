@@ -2,6 +2,8 @@ package com.example.bk_home_smarter;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.bk_home_smarter.src.models.Device;
+
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.DisconnectedBufferOptions;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -12,12 +14,14 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.nio.charset.Charset;
+
 public class MQTTService {
     final String serverUri ="tcp://io.adafruit.com:1883";
     final String clientId ="Mobilephone";
-    final String subscriptionTopic ="bkdadn202/feeds/home";
+    final String base_topic_url = "bkdadn202/feeds/";
     final String username ="bkdadn202";
-    final String password ="aio_XGqJ91GCgZTqAIBjcwAsRuAtXuJM";
+    final String password ="aio_lnQZ76cyrMJ1O7gbnyHJL5acC4ob";
 
     public MqttAndroidClient mqttAndroidClient;
 
@@ -66,7 +70,8 @@ public class MQTTService {
                     disconnectedBufferOptions.setPersistBuffer(false);
                     disconnectedBufferOptions.setDeleteOldestMessages(false);
                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
-                    subscribeToTopic();
+                    subscribeToTopic("home");
+                    subscribeToTopic("light");
                 }
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
@@ -80,7 +85,8 @@ public class MQTTService {
         }
     }
 
-    private void subscribeToTopic() {
+    private void subscribeToTopic(String topic) {
+        String subscriptionTopic = base_topic_url + topic;
         try {
             mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
                 @Override
@@ -100,4 +106,24 @@ public class MQTTService {
         }
     }
 
+    public void sendDataMQTT(String feed, Device device){
+        MqttMessage msg = new MqttMessage();
+        msg.setId(1234);
+        msg.setQos(0);
+        msg.setRetained(true);
+
+        String dataString = device.toString();
+
+        System.out.println(dataString);
+        byte[] b = dataString.getBytes(Charset.forName("UTF-8"));
+        msg.setPayload(b);
+
+        Log.d("ABC","Publish:"+ msg);
+        try {
+            String topic = base_topic_url + feed;
+            this.mqttAndroidClient.publish(topic, msg);
+        } catch ( MqttException e){
+            Log.d("MQTT", "sendDataMQTT: can not send anything");
+        }
+    }
 }

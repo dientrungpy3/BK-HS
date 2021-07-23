@@ -22,6 +22,7 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import com.example.bk_home_smarter.MQTTService;
 
 import java.nio.charset.Charset;
 
@@ -70,8 +71,8 @@ public class LivingRoomActivity extends AppCompatActivity {
                 String last_hum = snapshot.child(tem_hum_sensor.id).getValue().toString().split("-")[1];
 
                 System.out.println(snapshot.getValue());
-                temp.setText(last_temp);
-                hum.setText(last_hum);
+                temp.setText(last_temp + "\u00B0" + "C");
+                hum.setText(last_hum + "%");
 
                 // Get last fan status
                 String fan_status = snapshot.child(fan.id).getValue().toString();
@@ -122,7 +123,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                     fan.data = "0";
                     fan_img.setImageResource(R.drawable.fan_off);
                 }
-                sendDataMQTT(fan);
+                mqttService.sendDataMQTT("light", fan);
                 mData.child("Device").child(fan.id).setValue(fan.data);
             }
         });
@@ -139,7 +140,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                     light.data = "0";
                     light_img.setImageResource(R.drawable.light_off);
                 }
-                sendDataMQTT(light);
+                mqttService.sendDataMQTT("home", light);
                 mData.child("Device").child(light.id).setValue(light.data);
             }
         });
@@ -156,7 +157,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                     air.data = "0";
                     air_img.setImageResource(R.drawable.air_conditioner_off);
                 }
-                sendDataMQTT(air);
+                mqttService.sendDataMQTT("home", air);
                 mData.child("Device").child(air.id).setValue(air.data);
             }
         });
@@ -181,8 +182,8 @@ public class LivingRoomActivity extends AppCompatActivity {
                 if (device.id.equals(tem_hum_sensor.id)){
                     String new_temp = device.data.split("-")[0];
                     String new_hum = device.data.split("-")[1];
-                    temp.setText(new_temp);
-                    hum.setText(new_hum);
+                    temp.setText(new_temp + "\u00B0" + "C");
+                    hum.setText(new_hum + "%");
 
                     mData.child("Device").child("7").setValue(device.data);
                 }
@@ -224,28 +225,5 @@ public class LivingRoomActivity extends AppCompatActivity {
             public void deliveryComplete(IMqttDeliveryToken token) {
             }
         });
-    }
-
-
-
-    public void sendDataMQTT(Device device){
-        MqttMessage msg = new MqttMessage();
-        msg.setId(1234);
-        msg.setQos(0);
-        msg.setRetained(true);
-
-        String dataString = device.toString();
-
-        byte[] b = dataString.getBytes(Charset.forName("UTF-8"));
-        msg.setPayload(b);
-
-        Log.d("ABC","Publish:"+ msg);
-        try {
-            mqttService.mqttAndroidClient.publish("bkdadn202/feeds/home", msg);
-        } catch ( MqttException e){
-            Log.d("MQTT", "sendDataMQTT: can not send anything");
-        }
-
-        Toast.makeText(LivingRoomActivity.this, device.toString(), Toast.LENGTH_LONG).show();
     }
 }
