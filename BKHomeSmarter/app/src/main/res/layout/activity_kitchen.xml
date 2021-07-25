@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0EBCC"
+    android:background="#FFFFFF"
     tools:context=".HomeActivity">
 
 
@@ -23,19 +23,21 @@
         app:titleMargin="6dp"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp" >
+        tools:layout_editor_absoluteY="1dp">
+
         <TextView
+            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="kitchen Room"
-            android:textColor="#DD1118"
             android:layout_gravity="center"
+            android:text="Kitchen"
+            android:textColor="#DD1118"
             android:textSize="37sp"
-            android:textStyle="bold"
 
-            android:id="@+id/toolbar_title" />
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <ImageView
         android:id="@+id/light_kitchen"
         android:layout_width="110dp"
@@ -108,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="152dp"
-        android:text="TextView"
+        android:text="Loading"
         android:textColor="#DD1118"
         android:textSize="27sp"
         android:textStyle="bold"
@@ -141,12 +143,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="292dp"
         android:layout_marginTop="152dp"
-        android:text="TextView"
-        android:textColor="#003688"
+        android:text="Loading"
+        android:textColor="#2196f3 "
         android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/kitchen_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/undo" />
+
+    <ImageView
+        android:id="@+id/kitchen_settings"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="355dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cai_dat" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
