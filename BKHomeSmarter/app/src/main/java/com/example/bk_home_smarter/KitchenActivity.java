@@ -26,7 +26,7 @@ import com.example.bk_home_smarter.MQTTService;
 
 import java.nio.charset.Charset;
 
-public class KitchenRoomActivity extends AppCompatActivity {
+public class KitchenActivity extends AppCompatActivity {
 
     MQTTService mqttService;
     DatabaseReference mData;
