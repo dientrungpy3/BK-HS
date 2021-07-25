@@ -2,6 +2,7 @@ package com.example.bk_home_smarter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,9 +53,19 @@ public class LivingRoomActivity extends AppCompatActivity {
         boolean switch_light_state = false;
         boolean switch_air_state = false;
 
+
         ImageView fan_img = (ImageView) findViewById(R.id.fan_liv);
         ImageView air_img = (ImageView) findViewById(R.id.air_liv);
         ImageView light_img = (ImageView) findViewById(R.id.light_liv);
+        ImageView back = (ImageView) findViewById(R.id.liv_back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LivingRoomActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Create device
         mData = FirebaseDatabase.getInstance().getReference();

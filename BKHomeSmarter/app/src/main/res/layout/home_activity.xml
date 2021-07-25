@@ -10,7 +10,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F0EBCC"
+        android:background="#FFFFFF"
         tools:context=".HomeActivity">
 
 
@@ -60,7 +60,9 @@
                 android:layout_height="120dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/livingroom" />
+                app:srcCompat="@drawable/livingroom"
+                android:background="#D7F0F4"
+                android:padding="2dp" />
 
             <ImageView
                 android:id="@+id/playroom"
@@ -99,7 +101,9 @@
                 app:layout_constraintBottom_toTopOf="@+id/playroom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/diningroom"
-                app:srcCompat="@drawable/bedroom" />
+                app:srcCompat="@drawable/bedroom"
+                android:background="#D7F0F4"
+                android:padding="2dp" />
 
             <ImageView
                 android:id="@+id/bathroom"
@@ -107,7 +111,9 @@
                 android:layout_height="120dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/bathroom" />
+                app:srcCompat="@drawable/bathroom"
+                android:background="#D7F0F4"
+                android:padding="2dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

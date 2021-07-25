@@ -2,6 +2,7 @@ package com.example.bk_home_smarter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,7 +36,7 @@ public class BathRoomActivity extends AppCompatActivity {
     Device fan = new Device("11", "RELAY", "0", "");
     Device light = new Device("31", "RELAY", "0", "");
     Device air = new Device("32", "RELAY", "0", "");
-    ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,16 @@ public class BathRoomActivity extends AppCompatActivity {
         ImageView fan_img = (ImageView) findViewById(R.id.fan_bath);
         ImageView air_img = (ImageView) findViewById(R.id.air_bath);
         ImageView light_img = (ImageView) findViewById(R.id.light_bath);
+        ImageView back = (ImageView) findViewById(R.id.bath_back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BathRoomActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Create device
         mData = FirebaseDatabase.getInstance().getReference();
