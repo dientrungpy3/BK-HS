@@ -1,117 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".HomeActivity">
-
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="417dp"
-        android:layout_height="70dp"
-        android:background="#D7F0F4"
-        android:minHeight="?attr/actionBarSize"
-        android:textAlignment="inherit"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:titleMargin="6dp"
-        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BK Home Smarter"
-            android:textColor="#DD1118"
-            android:layout_gravity="center"
-            android:textSize="37sp"
-            android:textStyle="bold"
-
-            android:id="@+id/toolbar_title" />
-
-    </androidx.appcompat.widget.Toolbar>
+    android:fillViewport="true">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="292dp"
-        android:layout_height="485dp"
-        android:layout_marginTop="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
 
-        <ImageView
-            android:id="@+id/livingroom"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/livingroom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context=".HomeActivity">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="417dp"
+            android:layout_height="70dp"
             android:background="#D7F0F4"
-            android:padding="2dp" />
+            android:minHeight="?attr/actionBarSize"
+            android:textAlignment="inherit"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:titleMargin="6dp"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="1dp" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BK Home Smarter"
+                android:textColor="#DD1118"
+                android:layout_gravity="center"
+                android:textSize="37sp"
+                android:textStyle="bold"
 
-        <ImageView
-            android:id="@+id/playroom"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+                android:id="@+id/toolbar_title" />
+
+        </androidx.appcompat.widget.Toolbar>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="292dp"
+            android:layout_height="485dp"
+            android:layout_marginTop="58dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/playroom" />
-
-        <ImageView
-            android:id="@+id/diningroom"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="#D7F0F4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dinningroom" />
-
-        <ImageView
-            android:id="@+id/kitchen"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/bathroom"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/livingroom"
-            app:srcCompat="@drawable/kitchen" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/bedroom"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/playroom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/diningroom"
-            app:srcCompat="@drawable/bedroom"
-            android:background="#D7F0F4"
-            android:padding="2dp" />
+            <ImageView
+                android:id="@+id/livingroom"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/livingroom"
+                android:background="#D7F0F4"
+                android:padding="2dp" />
 
-        <ImageView
-            android:id="@+id/bathroom"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/bathroom"
-            android:background="#D7F0F4"
-            android:padding="2dp" />
+            <ImageView
+                android:id="@+id/playroom"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/playroom" />
+
+            <ImageView
+                android:id="@+id/diningroom"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="#D7F0F4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/dinningroom" />
+
+            <ImageView
+                android:id="@+id/kitchen"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toTopOf="@+id/bathroom"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/livingroom"
+                app:srcCompat="@drawable/kitchen" />
+
+            <ImageView
+                android:id="@+id/bedroom"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toTopOf="@+id/playroom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diningroom"
+                app:srcCompat="@drawable/bedroom"
+                android:background="#D7F0F4"
+                android:padding="2dp" />
+
+            <ImageView
+                android:id="@+id/bathroom"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/bathroom"
+                android:background="#D7F0F4"
+                android:padding="2dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
