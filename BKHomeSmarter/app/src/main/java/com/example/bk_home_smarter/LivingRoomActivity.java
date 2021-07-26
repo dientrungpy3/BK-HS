@@ -376,7 +376,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                             fan_img.setImageResource(R.drawable.fan_off);
                             fan.data = "0";
                         }
-                        mData.child("Device").child(fan.id).setValue(switch_fan_state);
+                        mData.child("Device").child(fan.id).setValue(fan.data);
                         mqttService.sendDataMQTT("bk-iot-relay", fan);
                         time_fan.setText("");
                     }
@@ -400,7 +400,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                             light_img.setImageResource(R.drawable.light_off);
                             light.data = "0";
                         }
-                        mData.child("Device").child(light.id).setValue(switch_light_state);
+                        mData.child("Device").child(light.id).setValue(light.data);
                         mqttService.sendDataMQTT("bk-iot-relay", light);
                         time_light.setText("");
                     }
@@ -424,7 +424,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                             air_img.setImageResource(R.drawable.air_conditioner_off);
                             air.data = "0";
                         }
-                        mData.child("Device").child(air.id).setValue(switch_air_state);
+                        mData.child("Device").child(air.id).setValue(air.data);
                         mqttService.sendDataMQTT("bk-iot-relay", air);
                         time_air.setText("");
                     }

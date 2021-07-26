@@ -169,4 +169,66 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cai_dat" />
 
+    <ImageView
+        android:id="@+id/clock_light_play"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="356dp"
+        android:layout_marginTop="260dp"
+        android:textColor="#DD1118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clock" />
+
+    <ImageView
+        android:id="@+id/clock_fan_play"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="356dp"
+        android:layout_marginTop="380dp"
+        android:textColor="#DD1118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clock" />
+
+    <ImageView
+        android:id="@+id/clock_air_play"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="355dp"
+        android:layout_marginTop="508dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clock" />
+
+    <TextView
+        android:id="@+id/time_light_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="234dp"
+        android:textColor="#DD1118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_air_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="480dp"
+        android:textColor="#DD1118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_fan_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="356dp"
+        android:textColor="#DD1118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
