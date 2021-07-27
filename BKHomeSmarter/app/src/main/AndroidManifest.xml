@@ -14,13 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".PopUp"></activity>
-        <activity android:name=".HomeActivity">
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/title_activity_sign_in"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".PopUp" />
+
+        <activity android:name=".HomeActivity">
         </activity>
         <activity android:name=".KitchenActivity" />
         <activity android:name=".LivingRoomActivity" />
