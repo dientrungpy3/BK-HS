@@ -19,9 +19,9 @@ import java.nio.charset.Charset;
 public class MQTTService {
     final String serverUri ="tcp://io.adafruit.com:1883";
     final String clientId ="Mobilephone";
-    final String base_topic_url = "bkdadn202/feeds/";
-    final String username ="bkdadn202";
-    final String password ="aio_SiZZ15tDhT6uJdQG7QPAdtql3VbC";
+    final String base_topic_url = "CSE_BBC1/feeds/";
+    final String username ="CSE_BBC1";
+    final String password ="aio_ieyO306EGPxQmn7S23iE7p3jIG8O";
 
     public MqttAndroidClient mqttAndroidClient;
 
@@ -70,8 +70,11 @@ public class MQTTService {
                     disconnectedBufferOptions.setPersistBuffer(false);
                     disconnectedBufferOptions.setDeleteOldestMessages(false);
                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
+
                     subscribeToTopic("home");
                     subscribeToTopic("light");
+
+                    subscribeToTopic("bk-iot-relay");
                 }
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {

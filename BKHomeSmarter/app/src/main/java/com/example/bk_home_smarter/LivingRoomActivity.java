@@ -151,7 +151,7 @@ public class LivingRoomActivity extends AppCompatActivity {
                     light.data = "0";
                     light_img.setImageResource(R.drawable.light_off);
                 }
-                mqttService.sendDataMQTT("home", light);
+                mqttService.sendDataMQTT("bk-iot-relay", light);
                 mData.child("Device").child(light.id).setValue(light.data);
             }
         });

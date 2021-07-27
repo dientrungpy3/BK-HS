@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "310008174309",
+    "firebase_url": "https://bk-home-smarter-default-rtdb.firebaseio.com",
     "project_id": "bk-home-smarter",
     "storage_bucket": "bk-home-smarter.appspot.com"
   },
