@@ -35,6 +35,7 @@ import java.nio.charset.Charset;
 public class BedRoomActivity extends AppCompatActivity {
 
     MQTTService mqttService;
+    MQTTService mqttServiceSub;
     DatabaseReference mData;
 
     Device tem_hum_sensor = new Device("7", "TEMP-HUMID", "0-0", "*C-%");
@@ -183,6 +184,8 @@ public class BedRoomActivity extends AppCompatActivity {
         });
 
         mqttService = new MQTTService(this);
+        mqttServiceSub = new MQTTService(this, "CSE_BBC");
+
         switch_fan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,7 +238,12 @@ public class BedRoomActivity extends AppCompatActivity {
             }
         });
 
-        mqttService.setCallback(new MqttCallbackExtended() {
+
+        /*
+        Set call back for CSE_BBC
+        call back for CSE_BBC1 will also be included
+         */
+        mqttServiceSub.setCallback(new MqttCallbackExtended() {
             @Override
             public void connectComplete(boolean reconnect, String serverURI) {
             }
@@ -245,7 +253,7 @@ public class BedRoomActivity extends AppCompatActivity {
 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
-//                Log.w(topic, message.toString());
+                // Log.w(topic, message.toString());
                 // String data_to_microbit = message.toString();
                 // port.write(data_to_microbit.getBytes(),1000);
                 Gson g = new Gson();
@@ -260,8 +268,40 @@ public class BedRoomActivity extends AppCompatActivity {
 
                     mData.child("Device").child("7").setValue(device.data);
                 }
+            }
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken token) {
+            }
+        });
 
-                else if (device_id.equals(fan.id)){
+
+        mqttService.setCallback(new MqttCallbackExtended() {
+            @Override
+            public void connectComplete(boolean reconnect, String serverURI) {
+            }
+            @Override
+            public void connectionLost( Throwable cause){
+            }
+
+            @Override
+            public void messageArrived(String topic, MqttMessage message) throws Exception {
+                // Log.w(topic, message.toString());
+                // String data_to_microbit = message.toString();
+                // port.write(data_to_microbit.getBytes(),1000);
+                Gson g = new Gson();
+                Device device = g.fromJson(message.toString(), Device.class);
+                String device_id = device.id;
+
+//                if (device.id.equals(tem_hum_sensor.id)){
+//                    String new_temp = device.data.split("-")[0];
+//                    String new_hum = device.data.split("-")[1];
+//                    temp.setText(new_temp + "\u00B0" + "C");
+//                    hum.setText(new_hum + "%");
+//
+//                    mData.child("Device").child("7").setValue(device.data);
+//                }
+
+                if (device_id.equals(fan.id)){
                     boolean switch_fan_state = device.data.equals("1");
                     switch_fan.setChecked(switch_fan_state);
                     if (switch_fan_state) {
