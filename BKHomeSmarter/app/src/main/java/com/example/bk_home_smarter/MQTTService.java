@@ -17,11 +17,11 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.nio.charset.Charset;
 
 public class MQTTService {
-    final String serverUri ="tcp://io.adafruit.com:1883";
-    final String clientId ="CSE_BBC";
-    final String base_topic_url = "bkdadn202/feeds/";
-    final String username ="bkdadn202";
-    final String password ="aio_JijK04WQ5pHIAuBmzy1sZ9zlbMSh";
+    private String serverUri ="tcp://io.adafruit.com:1883";
+    private String clientId ="CSE_BBC1";
+    private String base_topic_url = "bkdadn202/feeds/";
+    private String username ="bkdadn202";
+    private String password ="";
 
     public MqttAndroidClient mqttAndroidClient;
 
@@ -49,6 +49,37 @@ public class MQTTService {
         });
         connect();
     }
+
+    public MQTTService(Context context, String _clientId){
+        /* Uncomment this block
+        this.clientId = "CSE_BBC";
+        base_topic_url = "bkdadn202/feeds/";
+         */
+
+        mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
+        mqttAndroidClient.setCallback(new MqttCallbackExtended() {
+            @Override
+            public void connectComplete(boolean b, String s) {
+                Log.w("mqtt", s);
+            }
+
+            @Override
+            public void connectionLost(Throwable throwable){
+
+            }
+
+            @Override
+            public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
+                Log.w("Mqtt", mqttMessage.toString());
+            }
+
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
+            }
+        });
+        connect();
+    }
+
     public void setCallback(MqttCallbackExtended callback) {
         mqttAndroidClient.setCallback(callback);
     }
