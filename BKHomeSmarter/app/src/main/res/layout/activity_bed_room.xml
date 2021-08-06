@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0EBCC"
+    android:background="#FFFFFF"
     tools:context=".HomeActivity">
 
 
@@ -23,19 +23,21 @@
         app:titleMargin="6dp"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="1dp" >
+        tools:layout_editor_absoluteY="1dp">
+
         <TextView
+            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Bed Room"
             android:textColor="#DD1118"
-            android:layout_gravity="center"
             android:textSize="37sp"
-            android:textStyle="bold"
 
-            android:id="@+id/toolbar_title" />
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <ImageView
         android:id="@+id/light_bed"
         android:layout_width="110dp"

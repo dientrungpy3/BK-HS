@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "310008174309",
+    "firebase_url": "https://bk-home-smarter-default-rtdb.firebaseio.com",
     "project_id": "bk-home-smarter",
     "storage_bucket": "bk-home-smarter.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "310008174309-q86p5mdem3njjpva0540o4pc83clg7a4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bk_home_smarter",
+            "certificate_hash": "ae2dcc69c0d81dd0b0fecc10c77943424212937c"
+          }
+        },
         {
           "client_id": "310008174309-b9pi43v2oci9s9b1q56e0iu4qukggo16.apps.googleusercontent.com",
           "client_type": 3
