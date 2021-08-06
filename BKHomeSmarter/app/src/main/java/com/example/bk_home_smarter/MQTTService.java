@@ -47,13 +47,16 @@ public class MQTTService {
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
             }
         });
-        connect();
+        connect(username, password);
     }
 
     public MQTTService(Context context, String _clientId){
         /* Uncomment this block
-        this.clientId = "CSE_BBC";
+        serverUri ="tcp://io.adafruit.com:1883";
+        clientId ="CSE_BBC1";
         base_topic_url = "bkdadn202/feeds/";
+        username ="bkdadn202";
+        password ="";
          */
 
         mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
@@ -77,19 +80,19 @@ public class MQTTService {
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
             }
         });
-        connect();
+        connect(username, password);
     }
 
     public void setCallback(MqttCallbackExtended callback) {
         mqttAndroidClient.setCallback(callback);
     }
 
-    private void connect(){
+    private void connect(String _username, String _password){
         MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
         mqttConnectOptions.setAutomaticReconnect(true);
         mqttConnectOptions.setCleanSession(false);
-        mqttConnectOptions.setUserName(username);
-        mqttConnectOptions.setPassword(password.toCharArray());
+        mqttConnectOptions.setUserName(_username);
+        mqttConnectOptions.setPassword(_password.toCharArray());
 
         try {
             mqttAndroidClient.connect(mqttConnectOptions, null, new IMqttActionListener() {
