@@ -21,7 +21,7 @@ public class MQTTService {
     private String clientId ="CSE_BBC1";
     private String base_topic_url = "bkdadn202/feeds/";
     private String username ="bkdadn202";
-    private String password ="aio_HyNe652e8msdovDgwZ2AIjewsqlk";
+    private String password ="";
 
     public MqttAndroidClient mqttAndroidClient;
 
