@@ -16,16 +16,16 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.nio.charset.Charset;
 
-public class MQTTService {
+public class MQTTServicesub {
     final String serverUri ="tcp://io.adafruit.com:1883";
-    final String clientId ="CSE_BBC";
-    final String base_topic_url = "bkdadn202/feeds/";
-    final String username ="bkdadn202";
+    final String clientId ="CSE_BBC1";
+    final String base_topic_url = "dientrungpy3/feeds/";
+    final String username ="dientrungpy3";
     final String password ="";
 
     public MqttAndroidClient mqttAndroidClient;
 
-    public MQTTService(Context context){
+    public MQTTServicesub(Context context){
         mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
         mqttAndroidClient.setCallback(new MqttCallbackExtended() {
             @Override
@@ -70,7 +70,7 @@ public class MQTTService {
                     disconnectedBufferOptions.setPersistBuffer(false);
                     disconnectedBufferOptions.setDeleteOldestMessages(false);
                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
-                    subscribeToTopic("bk-iot-relay");
+                    subscribeToTopic("bk-iot-temp-humid");
                 }
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {

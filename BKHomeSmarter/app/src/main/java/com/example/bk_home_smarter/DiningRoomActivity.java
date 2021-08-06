@@ -183,6 +183,7 @@ public class DiningRoomActivity extends AppCompatActivity {
         });
 
         mqttService = new MQTTService(this);
+        MQTTServicesub mqttServiceSub = new MQTTServicesub(this);
         switch_fan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,6 +235,37 @@ public class DiningRoomActivity extends AppCompatActivity {
                 mData.child("Device").child(air.id).setValue(air.data);
             }
         });
+        mqttServiceSub.setCallback(new MqttCallbackExtended() {
+            @Override
+            public void connectComplete(boolean reconnect, String serverURI) {
+            }
+            @Override
+            public void connectionLost( Throwable cause){
+            }
+
+            @Override
+            public void messageArrived(String topic, MqttMessage message) throws Exception {
+//                Log.w(topic, message.toString());
+                // String data_to_microbit = message.toString();
+                // port.write(data_to_microbit.getBytes(),1000);
+                Gson g = new Gson();
+                Device device = g.fromJson(message.toString(), Device.class);
+                String device_id = device.id;
+
+                if (device.id.equals(tem_hum_sensor.id)){
+                    String new_temp = device.data.split("-")[0];
+                    String new_hum = device.data.split("-")[1];
+                    temp.setText(new_temp + "\u00B0" + "C");
+                    hum.setText(new_hum + "%");
+
+                    mData.child("Device").child("7").setValue(device.data);
+                }
+            }
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken token) {
+            }
+        });
+
 
         mqttService.setCallback(new MqttCallbackExtended() {
             @Override

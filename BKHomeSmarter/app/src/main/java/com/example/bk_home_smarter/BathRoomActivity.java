@@ -29,12 +29,14 @@ import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import com.example.bk_home_smarter.MQTTService;
+import com.example.bk_home_smarter.MQTTServicesub;
 
 import java.nio.charset.Charset;
 
 public class BathRoomActivity extends AppCompatActivity {
 
     MQTTService mqttService;
+    MQTTServicesub mqttServicesub;
     DatabaseReference mData;
 
     Device tem_hum_sensor = new Device("7", "TEMP-HUMID", "0-0", "*C-%");
@@ -183,6 +185,7 @@ public class BathRoomActivity extends AppCompatActivity {
         });
 
         mqttService = new MQTTService(this);
+        MQTTServicesub mqttServiceSub = new MQTTServicesub(this);
         switch_fan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,6 +235,36 @@ public class BathRoomActivity extends AppCompatActivity {
                 }
                 mqttService.sendDataMQTT("bk-iot-relay", air);
                 mData.child("Device").child(air.id).setValue(air.data);
+            }
+        });
+        mqttServiceSub.setCallback(new MqttCallbackExtended() {
+            @Override
+            public void connectComplete(boolean reconnect, String serverURI) {
+            }
+            @Override
+            public void connectionLost( Throwable cause){
+            }
+
+            @Override
+            public void messageArrived(String topic, MqttMessage message) throws Exception {
+//                Log.w(topic, message.toString());
+                // String data_to_microbit = message.toString();
+                // port.write(data_to_microbit.getBytes(),1000);
+                Gson g = new Gson();
+                Device device = g.fromJson(message.toString(), Device.class);
+                String device_id = device.id;
+
+                if (device.id.equals(tem_hum_sensor.id)){
+                    String new_temp = device.data.split("-")[0];
+                    String new_hum = device.data.split("-")[1];
+                    temp.setText(new_temp + "\u00B0" + "C");
+                    hum.setText(new_hum + "%");
+
+                    mData.child("Device").child("7").setValue(device.data);
+                }
+            }
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken token) {
             }
         });
 
